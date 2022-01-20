@@ -10,9 +10,11 @@ function Login() {
         if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
             // development build code
             setUrlPrefix("http://localhost:3001")
+            console.log("dev")
         } else {
             // production build code
             setUrlPrefix("https://webe-api.herokuapp.com/")
+            console.log("prod")
         }
     }, [])
 //https://webe-api.herokuapp.com/api/auth/google/
@@ -20,8 +22,10 @@ function Login() {
     const [showlogoutButton, setShowlogoutButton] = useState(false);
     const onLoginSuccess = async (googleData) => {
         console.log('Login Success:', googleData.profileObj);
+        console.log(urlPrefix)
         const res = await fetch(urlPrefix+"/api/auth/google/", {
             method: "POST",
+            mode: "no-cors",
             body: JSON.stringify({
             token: googleData.tokenId
           }),
