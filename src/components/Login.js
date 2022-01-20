@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Facebook from './FacebookLogin';
 
-const clientId = "293068939315-4nvujgs5q14d5gqcq7p2p7til0ngc565.apps.googleusercontent.com";
+const clientId = "293068939315-j9sg0k19mnep7mepfrs7vtkmt3n0lqfo.apps.googleusercontent.com";
 
 function Login() {
     const [urlPrefix, setUrlPrefix] = useState('')
