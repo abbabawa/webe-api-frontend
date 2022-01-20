@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 
 export default class Facebook extends Component {
@@ -7,33 +7,28 @@ export default class Facebook extends Component {
     userID: "",
     name: "",
     email: "",
-    picture: ""
+    picture: "",
+    urlPrefix: 'https://webe-api.herokuapp.com'
   };
 
   responseFacebook = async (response) => {
-    const [urlPrefix, setUrlPrefix] = useState('https://webe-api.herokuapp.com')
-    useEffect(()=>{
-        if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-            // development build code
-            setUrlPrefix("http://localhost:3001")
-            console.log("dev")
-        } else {
-            // production build code
-            setUrlPrefix("https://webe-api.herokuapp.com")
-            console.log("prod")
-        }
-    }, [])
+    
     console.log(response);
     if (response.status !== "unknown") {
-      const res = await fetch(urlPrefix+"/api/auth/facebook/", {
-          method: "POST",
-          body: JSON.stringify({
+      const res = await fetch(this.state.urlPrefix+"/api/auth/facebook/", {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify({
           token: response.accessToken
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }) 
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': '*',
+        "Access-Control-Allow": "*",
+        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Headers": "*"
+      }
+    }) 
       const data = await res.json()
       this.setState({
         isLoggedIn: true,
