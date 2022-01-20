@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import FacebookLogin from "react-facebook-login";
 
 export default class Facebook extends Component {
@@ -11,9 +11,21 @@ export default class Facebook extends Component {
   };
 
   responseFacebook = async (response) => {
+    const [urlPrefix, setUrlPrefix] = useState('https://webe-api.herokuapp.com')
+    useEffect(()=>{
+        if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+            // development build code
+            setUrlPrefix("http://localhost:3001")
+            console.log("dev")
+        } else {
+            // production build code
+            setUrlPrefix("https://webe-api.herokuapp.com")
+            console.log("prod")
+        }
+    }, [])
     console.log(response);
     if (response.status !== "unknown") {
-      const res = await fetch("/api/auth/facebook/", {
+      const res = await fetch(urlPrefix+"/api/auth/facebook/", {
           method: "POST",
           body: JSON.stringify({
           token: response.accessToken
