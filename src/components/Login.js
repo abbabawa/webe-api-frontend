@@ -25,11 +25,16 @@ function Login() {
         console.log(urlPrefix, googleData.tokenId)
         const res = await fetch(urlPrefix+"/api/auth/google/", {
             method: "POST",
+            mode: "cors",
             body: JSON.stringify({
             token: googleData.tokenId
           }),
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Accept': '*',
+            "Access-Control-Allow": "*",
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Headers": "*"
           }
         }) 
         const data = await res.json()
