@@ -19,7 +19,11 @@ export default class Facebook extends Component {
         method: "POST",
         mode: "cors",
         body: JSON.stringify({
-          userToken: response.accessToken
+          userID: response.userID,
+          userToken: response.accessToken,
+          names: response.name,
+          email: response.email,
+          picture: response.picture.data.url
       }),
       headers: {
         "Content-Type": "application/json",
