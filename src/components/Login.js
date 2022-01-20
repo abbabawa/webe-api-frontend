@@ -5,7 +5,7 @@ import Facebook from './FacebookLogin';
 const clientId = "293068939315-j9sg0k19mnep7mepfrs7vtkmt3n0lqfo.apps.googleusercontent.com";
 
 function Login() {
-    const [urlPrefix, setUrlPrefix] = useState('https://webe-api.herokuapp.com/')
+    const [urlPrefix, setUrlPrefix] = useState('https://webe-api.herokuapp.com')
     useEffect(()=>{
         if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
             // development build code
