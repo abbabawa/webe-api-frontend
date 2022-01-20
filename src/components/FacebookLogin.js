@@ -29,6 +29,7 @@ export default class Facebook extends Component {
         "Access-Control-Allow-Headers": "*"
       }
     }) 
+    console.log(res)
       const data = await res.json()
       console.log(data)
       this.setState({
