@@ -30,6 +30,7 @@ export default class Facebook extends Component {
       }
     }) 
       const data = await res.json()
+      console.log(data)
       this.setState({
         isLoggedIn: true,
         userID: response.userID,
