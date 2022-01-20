@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Card, Col } from 'react-bootstrap';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Facebook from './FacebookLogin';
 
@@ -17,9 +18,18 @@ function Login() {
             console.log("prod")
         }
     }, [])
-//https://webe-api.herokuapp.com/api/auth/google/
+    //https://webe-api.herokuapp.com/api/auth/google/
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
+    const [cardsDisplay, setCardsDisplay] = useState({login: true, register: false})
+
+    const toggleCards = (e)=>{
+        setCardsDisplay(prev=>{
+            let obj = e.target.id === 'login' ? {login: true, register: false} : {login: false, register: true} 
+            return obj
+        })
+    }
+
     const onLoginSuccess = async (googleData) => {
         console.log('Login Success:', googleData.profileObj);
         console.log(urlPrefix, googleData.tokenId)
@@ -57,7 +67,7 @@ function Login() {
 
     return (
         <>
-            <div>
+            {/* <div>
                 { showloginButton ?
                     <GoogleLogin
                         clientId={clientId}
@@ -79,7 +89,96 @@ function Login() {
             </div>
             <div>
                 <Facebook urlPrefix={urlPrefix} />
-            </div>
+            </div> */}
+            <Col md="6" className='mx-auto mt-4'>
+                <Col md="12" className='mx-auto mt-4'>
+                    <Card className='bg-light'>
+                        <Card.Body>
+                            <h2 className='text-center my-3'>WeBe API Test</h2>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md="12" className='mx-auto mt-4'>
+                    <Card className='bg-light'>
+                        <Card.Header>
+                            <ul className="nav nav-tabs p-0">
+                                <li className='nav-item me-4' id="login" onClick={toggleCards}>Login</li>
+                                <li className='nav-item' id="register" onClick={toggleCards}>Register</li>
+                            </ul>
+                        </Card.Header>
+                        <Card.Body className={cardsDisplay.login ? '' : 'd-none'}>
+                            <h3 className='text-center my-3'>Login</h3>
+                            <form>
+                                <div class="row mb-3">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" name="email" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="password" class="form-control" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <h4 className='text-center'>OR</h4>
+                            <div className='d-md-flex justify-content-around mt-3'>
+                                { showloginButton ?
+                                    <GoogleLogin
+                                        clientId={clientId}
+                                        buttonText="Sign In With Google"
+                                        onSuccess={onLoginSuccess}
+                                        onFailure={onLoginFailure}
+                                        cookiePolicy={'single_host_origin'}
+                                        isSignedIn={true}
+                                    /> : null}
+
+                                { showlogoutButton ?
+                                    <GoogleLogout
+                                        clientId={clientId}
+                                        buttonText="Sign Out"
+                                        onLogoutSuccess={onSignoutSuccess}
+                                    >
+                                    </GoogleLogout> : null
+                                }
+                                <Facebook urlPrefix={urlPrefix} />
+                            </div>
+                        </Card.Body>
+                        <Card.Body className={cardsDisplay.register ? '' : 'd-none'}>
+                            <h3 className='text-center my-3'>Register</h3>
+                            <form>
+                                <div class="row mb-3">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">First Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="fname" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Last Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="lname" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" name="email" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="password" class="form-control" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Col>
         </>
     );
 }

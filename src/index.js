@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './bootstrap/css/bootstrap.min.css';
 import Login from './components/Login';
 import reportWebVitals from './reportWebVitals';
+import { Container, Row } from 'react-bootstrap';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <BrowserRouter>
+      <Container fluid className="">
+        <Row>
+          <Routes>                    
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Login />} />
+          </Routes>
+        </Row>
+      </Container>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
