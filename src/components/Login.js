@@ -22,10 +22,9 @@ function Login() {
     const [showlogoutButton, setShowlogoutButton] = useState(false);
     const onLoginSuccess = async (googleData) => {
         console.log('Login Success:', googleData.profileObj);
-        console.log(urlPrefix)
+        console.log(urlPrefix, googleData.tokenId)
         const res = await fetch(urlPrefix+"/api/auth/google/", {
             method: "POST",
-            mode: "no-cors",
             body: JSON.stringify({
             token: googleData.tokenId
           }),
