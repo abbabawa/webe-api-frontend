@@ -83,7 +83,7 @@ function App() {
         <Row className=''>
           <Routes>                    
               <Route path="/" element={<Login setUser={setUser} setAuthorization={setAuthorization} makePostRequest={makePostRequest} />} />
-              <Route path="/home" element={<Home />} getUser={getUser} getAuthorization={getAuthorization} />
+              <Route path="/home" element={<Home getUser={getUser} getAuthorization={getAuthorization} />}  />
               <Route path="/gallery" element={<WeGallery />} />
           </Routes>
         </Row>
