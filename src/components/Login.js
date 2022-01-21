@@ -105,6 +105,9 @@ function Login(props) {
             }
         }) 
     }
+    const goHome = ()=>{
+        navigate("/home")
+    }
     return (
         <>
             {/* <div>
@@ -183,7 +186,7 @@ function Login(props) {
                                     >
                                     </GoogleLogout> : null
                                 }
-                                <Facebook urlPrefix={urlPrefix} setUser={props.setUser} setAuthorization={props.setAuthorization} />
+                                <Facebook goHome={goHome} urlPrefix={urlPrefix} setUser={props.setUser} setAuthorization={props.setAuthorization} />
                             </div>
                         </Card.Body>
                         <Card.Body className={cardsDisplay.register ? '' : 'd-none'}>
