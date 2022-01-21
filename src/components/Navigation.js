@@ -21,7 +21,7 @@ const Navigation = (props)=>{
                         <Nav>
                         <Nav.Link href="#deets">More deets</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
-                            {props.getUser()}
+                            {props.getUser().name}
                         </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
