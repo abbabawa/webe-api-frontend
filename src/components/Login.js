@@ -55,7 +55,7 @@ function Login(props) {
             }) 
             const data = await res.json()
             if(data.accessToken !==  ''){
-                props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
+                props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken, email: data.email}))
                 props.setAuthorization(data.accessToken)
                 navigate("/home")
                 return
@@ -106,7 +106,7 @@ function Login(props) {
             console.log(res)
 
             if(res.accessToken !==  ''){console.log(res)
-                props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken}))
+                props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken, email: res.email}))
                 props.setAuthorization(res.accessToken)
                 //navigate("/home")
             }

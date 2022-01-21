@@ -38,7 +38,7 @@ const Facebook = (props)=> {
       const data = await res.json()
       console.log(data)
       if(data.accessToken !==  ''){
-          props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
+          props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken, email: data.email}))
           props.setAuthorization(data.accessToken)
           props.goHome()
       }

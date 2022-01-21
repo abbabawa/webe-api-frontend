@@ -20,7 +20,7 @@ const Navigation = (props)=>{console.log(props.getUser())
                             </NavDropdown> */}
                         </Nav>
                         <Nav>
-                        <Nav.Link href="#deets">{user.email}</Nav.Link>
+                        <Nav.Link href="#deets">{user.name}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             
                         </Nav.Link>
