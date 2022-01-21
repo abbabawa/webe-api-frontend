@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
 
-const Navigation = ()=>{
+const Navigation = (props)=>{
     return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mb-4">
                 <Container fluid>
@@ -21,7 +21,7 @@ const Navigation = ()=>{
                         <Nav>
                         <Nav.Link href="#deets">More deets</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
+                            {props.getUser()}
                         </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

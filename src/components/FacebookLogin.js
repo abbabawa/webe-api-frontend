@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 export default class Facebook extends Component {
   constructor(props){
@@ -17,7 +17,7 @@ export default class Facebook extends Component {
   
 
   responseFacebook = async (response) => {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     console.log(response);
     if (response.status !== "unknown") {
       const res = await fetch(this.state.urlPrefix+"/api/auth/facebook/", {
@@ -44,7 +44,7 @@ export default class Facebook extends Component {
       if(data.accessToken !==  ''){
           this.props.setUser(JSON.stringify({id: data.id, name: data.name, accessToken: data.accessToken}))
           this.props.setAuthorization(data.accessToken)
-          navigate("/home")
+          this.props.history.push("/home")
       }
       this.setState({
         isLoggedIn: true,
