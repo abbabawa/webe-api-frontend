@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Facebook from './FacebookLogin';
+import Register from './Register';
+
+import { useNavigate } from "react-router-dom"
 
 const clientId = "293068939315-j9sg0k19mnep7mepfrs7vtkmt3n0lqfo.apps.googleusercontent.com";
 
-function Login() {
+function Login(props) {
+    const navigate = useNavigate()
     const [urlPrefix, setUrlPrefix] = useState('https://webe-api.herokuapp.com')
     useEffect(()=>{
         if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -48,6 +52,11 @@ function Login() {
           }
         }) 
         const data = await res.json()
+        if(data.status ===  200){
+            props.setUser(JSON.stringify({id: data.id, name: data.name, accessToken: data.accessToken}))
+            props.setAuthorization(data.accessToken)
+            navigate("/home")
+        }
         // console.log("data "+data)
         console.log(data)
         setShowloginButton(false);
@@ -65,6 +74,37 @@ function Login() {
         setShowlogoutButton(false);
     };
 
+    const [loginInputs, setLoginInputs] = useState({email: '', password: ''})
+
+    const handleChange = (e)=>{
+        setLoginInputs({
+            ...loginInputs,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        fetch(urlPrefix+"/api/auth/login/", {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(loginInputs),
+          headers: {
+            "Content-Type": "application/json",
+            'Accept': '*',
+            "Access-Control-Allow": "*",
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Headers": "*"
+          }
+        }).then(res=>{
+            console.log(res)
+            if(res.status === 200){
+                props.setUser(JSON.stringify({id: res.id, name: res.name, accessToken: res.accessToken}))
+                props.setAuthorization(res.accessToken)
+                navigate("/home")
+            }
+        }) 
+    }
     return (
         <>
             {/* <div>
@@ -112,16 +152,16 @@ function Login() {
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="email" name="email" class="form-control" />
+                                        <input type="email" name="email" onChange={handleChange} value={loginInputs.email} class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" />
+                                        <input type="password" name="password" onChange={handleChange} value={loginInputs.password} class="form-control" />
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <button type="submit" onClick={handleSubmit} class="btn btn-primary">Sign in</button>
                             </form>
                             <h4 className='text-center'>OR</h4>
                             <div className='d-md-flex justify-content-around mt-3'>
@@ -147,34 +187,7 @@ function Login() {
                             </div>
                         </Card.Body>
                         <Card.Body className={cardsDisplay.register ? '' : 'd-none'}>
-                            <h3 className='text-center my-3'>Register</h3>
-                            <form>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">First Name</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="fname" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Last Name</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="lname" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" name="email" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" />
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                            </form>
+                            <Register />
                         </Card.Body>
                     </Card>
                 </Col>

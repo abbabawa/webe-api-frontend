@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
+import { useNavigate } from "react-router-dom";
 
 export default class Facebook extends Component {
-  state = {
-    isLoggedIn: false,
-    userID: "",
-    name: "",
-    email: "",
-    picture: "",
-    urlPrefix: 'https://webe-api.herokuapp.com'
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoggedIn: false,
+      userID: "",
+      name: "",
+      email: "",
+      picture: "",
+      urlPrefix: 'https://webe-api.herokuapp.com'
+    };
+  }
+  
 
   responseFacebook = async (response) => {
-    
+    const navigate = useNavigate()
     console.log(response);
     if (response.status !== "unknown") {
       const res = await fetch(this.state.urlPrefix+"/api/auth/facebook/", {
@@ -36,6 +41,11 @@ export default class Facebook extends Component {
     console.log(res)
       const data = await res.json()
       console.log(data)
+      if(data.status ===  200){
+          this.props.setUser(JSON.stringify({id: data.id, name: data.name, accessToken: data.accessToken}))
+          this.props.setAuthorization(data.accessToken)
+          navigate("/home")
+      }
       this.setState({
         isLoggedIn: true,
         userID: response.userID,
