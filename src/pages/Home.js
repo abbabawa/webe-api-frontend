@@ -1,11 +1,11 @@
 import { Card, Col, ListGroup } from "react-bootstrap"
 import Navigation from "../components/Navigation"
 
-const Home = ()=>{
+const Home = (props)=>{
     return (
         <>
             <Col xs="12" className="p-0">
-                <Navigation />
+                <Navigation getUser={props.getUser} />
             </Col>
             <Col md="3">
                     <Card>
