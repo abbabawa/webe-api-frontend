@@ -40,7 +40,7 @@ const Facebook = (props)=> {
       if(data.accessToken !==  ''){
           props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
           props.setAuthorization(data.accessToken)
-          //this.props.goHome()
+          props.goHome()
       }
       setState({
         isLoggedIn: true,
