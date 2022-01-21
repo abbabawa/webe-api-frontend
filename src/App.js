@@ -69,7 +69,7 @@ const getAuthorization = ()=>{
   return headers.Authorization
 }
 
-const setUser = (user)=>{
+const setUser = (user)=>{console.log(user)
 	localStorage.setItem('user', user)
 }
 

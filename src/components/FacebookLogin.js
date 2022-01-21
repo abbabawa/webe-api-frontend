@@ -1,26 +1,22 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 //import { useNavigate } from "react-router-dom";
 
-export default class Facebook extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      isLoggedIn: false,
-      userID: "",
-      name: "",
-      email: "",
-      picture: "",
-      urlPrefix: 'https://webe-api.herokuapp.com'
-    };
-  }
-  
+const Facebook = (props)=> {
+  const [state, setState] = useState({
+    isLoggedIn: false,
+    userID: "",
+    name: "",
+    email: "",
+    picture: "",
+    urlPrefix: 'https://webe-api.herokuapp.com'
+  })
 
-  responseFacebook = async (response) => {
+  const responseFacebook = async (response) => {
     // const navigate = useNavigate()
     console.log(response);
     if (response.status !== "unknown") {
-      const res = await fetch(this.state.urlPrefix+"/api/auth/facebook/", {
+      const res = await fetch(state.urlPrefix+"/api/auth/facebook/", {
         method: "POST",
         mode: "cors",
         body: JSON.stringify({
@@ -44,9 +40,9 @@ export default class Facebook extends Component {
       if(data.accessToken !==  ''){
           this.props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
           this.props.setAuthorization(data.accessToken)
-          this.props.goHome()
+          //this.props.goHome()
       }
-      this.setState({
+      setState({
         isLoggedIn: true,
         userID: response.userID,
         name: response.name,
@@ -56,15 +52,15 @@ export default class Facebook extends Component {
     }
   };
 
-  componentClicked = () => {
+  const componentClicked = () => {
     console.log("clicked");
   };
 
-  render() {
-    const { email, isLoggedIn, name, picture } = this.state;
-    let fbContent;
+  
+  //const { email, isLoggedIn, name, picture } = state;
+  let fbContent;
 
-    if (isLoggedIn) {
+    if (state.isLoggedIn) {
       fbContent = (
         <div
           style={{
@@ -74,9 +70,9 @@ export default class Facebook extends Component {
             padding: "20px"
           }}
         >
-          <img src={picture} alt={name} />
-          <h2>Welcome {name}</h2>
-          Email: {email}
+          <img src={state.picture} alt={state.name} />
+          <h2>Welcome {state.name}</h2>
+          Email: {state.email}
         </div>
       );
     } else {
@@ -85,12 +81,13 @@ export default class Facebook extends Component {
           appId="670815464281190"
           autoLoad={true}
           fields="name,email,picture"
-          onClick={this.componentClicked}
-          callback={this.responseFacebook}
+          onClick={componentClicked}
+          callback={responseFacebook}
           icon="fa-facebook"
         />
       );
     }
     return <div>{fbContent}</div>;
-  }
 }
+
+export default Facebook

@@ -5,6 +5,7 @@ import Facebook from './FacebookLogin';
 import Register from './Register';
 
 import { useNavigate } from "react-router-dom"
+import Profile from './Profile';
 
 const clientId = "293068939315-j9sg0k19mnep7mepfrs7vtkmt3n0lqfo.apps.googleusercontent.com";
 
@@ -34,31 +35,35 @@ function Login(props) {
         })
     }
 
-    const onLoginSuccess = async (googleData) => {
+    const onLoginSuccess = async (googleData) => {console.log(googleData)
         console.log('Login Success:', googleData.profileObj);
         console.log(urlPrefix, googleData.tokenId)
-        const res = await fetch(urlPrefix+"/api/auth/google/", {
-            method: "POST",
-            mode: "cors",
-            body: JSON.stringify({
-            userToken: googleData.tokenId
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            'Accept': '*',
-            "Access-Control-Allow": "*",
-            'Access-Control-Allow-Origin': '*',
-            "Access-Control-Allow-Headers": "*"
-          }
-        }) 
-        const data = await res.json()
-        if(data.accessToken !==  ''){
-            props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
-            props.setAuthorization(data.accessToken)
-            navigate("/home")
+        try{
+            const res = await fetch(urlPrefix+"/api/auth/google/", {
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify({
+                userToken: googleData.tokenId
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                'Accept': '*',
+                "Access-Control-Allow": "*",
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Headers": "*"
+            }
+            }) 
+            const data = await res.json()
+            if(data.accessToken !==  ''){
+                props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken}))
+                props.setAuthorization(data.accessToken)
+                navigate("/home")
+            }
+            // console.log("data "+data)
+            console.log(data)
+        }catch(e){
+            console.log(e)
         }
-        // console.log("data "+data)
-        console.log(data)
         setShowloginButton(false);
         setShowlogoutButton(true);
     };
@@ -98,12 +103,13 @@ function Login(props) {
           }
         }).then(res=>{
             console.log(res)
-            if(res.status === 200){
-                props.setUser(JSON.stringify({id: res.id, name: res.name, accessToken: res.accessToken}))
+
+            if(res.accessToken !==  ''){console.log(res)
+                props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken}))
                 props.setAuthorization(res.accessToken)
-                navigate("/home")
+                //navigate("/home")
             }
-        }) 
+        }).catch(e=>{console.log(e)})
     }
     const goHome = ()=>{
         navigate("/home")
@@ -179,12 +185,7 @@ function Login(props) {
                                     /> : null}
 
                                 { showlogoutButton ?
-                                    <GoogleLogout
-                                        clientId={clientId}
-                                        buttonText="Sign Out"
-                                        onLogoutSuccess={onSignoutSuccess}
-                                    >
-                                    </GoogleLogout> : null
+                                    <Profile  /> : null
                                 }
                                 <Facebook goHome={goHome} urlPrefix={urlPrefix} setUser={props.setUser} setAuthorization={props.setAuthorization} />
                             </div>

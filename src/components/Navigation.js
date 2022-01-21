@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
 
-const Navigation = (props)=>{
+const Navigation = (props)=>{console.log(props.getUser())
     return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mb-4">
                 <Container fluid>
@@ -19,9 +19,9 @@ const Navigation = (props)=>{
                             </NavDropdown> */}
                         </Nav>
                         <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
+                        <Nav.Link href="#deets">{props.getUser().email}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
-                            {props.getUser().name}
+                            
                         </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
