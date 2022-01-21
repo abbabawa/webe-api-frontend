@@ -1,7 +1,11 @@
+import { Col } from "react-bootstrap"
+import Navigation from "../components/Navigation"
 
 const Home = ()=>{
     return (
-        <div></div>
+        <Col xs="12" className="p-0">
+            <Navigation />
+        </Col>
     )
 }
 

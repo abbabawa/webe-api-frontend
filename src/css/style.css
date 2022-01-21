@@ -1,0 +1,8 @@
+
+.gallery-image{
+    /* max-height: 300px; */
+}
+
+.gallery-image img{
+    overflow: hidden;
+}

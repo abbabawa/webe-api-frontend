@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/style.css';
 import './bootstrap/css/bootstrap.min.css';
 import Login from './components/Login';
 import reportWebVitals from './reportWebVitals';
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import WeGallery from './pages/WeGallery';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Container fluid className="">
-        <Row>
+        <Row className=''>
           <Routes>                    
               <Route path="/" element={<Login />} />
-              <Route path="/home" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/gallery" element={<WeGallery />} />
           </Routes>
         </Row>
       </Container>
