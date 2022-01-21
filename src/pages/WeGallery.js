@@ -2,8 +2,8 @@ import { Col, Row } from "react-bootstrap"
 import GalleryImage from "../components/GalleryImage"
 import Navigation from "../components/Navigation"
 
-import alex from '../gallery/images/pexels-alex-azabache-3214944.jpg'
-import brady from '../gallery/images/pexels-brady-knoll-3329292.jpg'
+// import alex from '../gallery/images/pexels-alex-azabache-3214944.jpg'
+// import brady from '../gallery/images/pexels-brady-knoll-3329292.jpg'
 
 const WeGallery = ()=>{
     return (
@@ -15,13 +15,13 @@ const WeGallery = ()=>{
             <Col>
                 <Row>
                     {
-                        [alex, brady].map(img=>{
-                            return (
-                                <Col md="3">
-                                    <GalleryImage image={img} />
-                                </Col>
-                            )
-                        })
+                        // [alex, brady].map(img=>{
+                        //     return (
+                        //         <Col md="3">
+                        //             <GalleryImage image={img} />
+                        //         </Col>
+                        //     )
+                        // })
                     }
                 </Row>
             </Col>
