@@ -41,7 +41,7 @@ export default class Facebook extends Component {
     console.log(res)
       const data = await res.json()
       console.log(data)
-      if(data.status ===  200){
+      if(data.accessToken !==  ''){
           this.props.setUser(JSON.stringify({id: data.id, name: data.name, accessToken: data.accessToken}))
           this.props.setAuthorization(data.accessToken)
           navigate("/home")
