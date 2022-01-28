@@ -58,7 +58,7 @@ function Login(props) {
             if(data.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken, email: data.email}))
                 props.setAuthorization(data.accessToken)
-                //navigate("/home")
+                navigate("/home")
                 return
             }
             // console.log("data "+data)
