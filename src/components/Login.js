@@ -102,13 +102,13 @@ function Login(props) {
             'Access-Control-Allow-Origin': '*',
             "Access-Control-Allow-Headers": "*"
           }
-        }).then(res=>{
+        }).then(async res=>{
             console.log(res)
-
-            if(res.accessToken !==  ''){console.log(res)
+            res = await res.json()
+            if(res.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken, email: res.email}))
                 props.setAuthorization(res.accessToken)
-                //navigate("/home")
+                navigate("/home")
             }
         }).catch(e=>{console.log(e)})
     }
