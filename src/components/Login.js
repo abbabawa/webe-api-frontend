@@ -108,7 +108,7 @@ function Login(props) {
             if(res.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken, email: res.email}))
                 props.setAuthorization(res.accessToken)
-                navigate("/home")
+                //navigate("/home")
             }
         }).catch(e=>{console.log(e)})
     }
@@ -186,7 +186,7 @@ function Login(props) {
                                     /> : null}
 
                                 { showlogoutButton ?
-                                    <Profile  /> : null
+                                    <Profile getUser={props.getUser}  /> : null
                                 }
                                 <Facebook goHome={goHome} urlPrefix={urlPrefix} setUser={props.setUser} setAuthorization={props.setAuthorization} />
                             </div>

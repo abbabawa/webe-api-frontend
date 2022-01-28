@@ -6,7 +6,8 @@ const Profile = (props)=>{
             <Card className='bg-light'>
                 <Card.Img variant="top" src={props.image} />
                 <Card.Body>
-                    <h6>Name: {props.name}</h6>
+                    <h3>Name: {props.getUser().name}</h3>
+                    <p>Thanks for signing up</p>
                 </Card.Body>
 
             </Card>

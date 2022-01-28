@@ -82,7 +82,7 @@ function App() {
       <Container fluid className="">
         <Row className=''>
           <Routes>                    
-              <Route path="/" element={<Login setUser={setUser} setAuthorization={setAuthorization} makePostRequest={makePostRequest} />} />
+              <Route path="/" element={<Login setUser={setUser} setAuthorization={setAuthorization} makePostRequest={makePostRequest} getUser={getUser} />} />
               <Route path="/home" element={<Home getUser={getUser} getAuthorization={getAuthorization} />}  />
               <Route path="/gallery" element={<WeGallery />} />
           </Routes>
