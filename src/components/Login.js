@@ -53,6 +53,7 @@ function Login(props) {
                 "Access-Control-Allow-Headers": "*"
             }
             }) 
+            console.log(res);
             const data = await res.json()
             if(data.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken, email: data.email}))
