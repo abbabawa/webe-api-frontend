@@ -57,7 +57,7 @@ function Login(props) {
             if(data.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: data.id, name: data.firstName+" "+data.lastName, accessToken: data.accessToken, email: data.email}))
                 props.setAuthorization(data.accessToken)
-                navigate("/home")
+                //navigate("/home")
                 return
             }
             // console.log("data "+data)
@@ -108,7 +108,7 @@ function Login(props) {
             if(res.accessToken !==  ''){
                 props.setUser(JSON.stringify({id: res.id, name: res.firstName+" "+res.lastName, accessToken: res.accessToken, email: res.email}))
                 props.setAuthorization(res.accessToken)
-                //navigate("/home")
+                navigate("/home")
             }
         }).catch(e=>{console.log(e)})
     }
