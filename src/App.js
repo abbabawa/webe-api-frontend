@@ -6,6 +6,8 @@ import Login from './components/Login';
 
 import Home from './pages/Home';
 import WeGallery from './pages/WeGallery';
+import UploadArticle from './pages/UploadArticle';
+import ApiDocumentation from './pages/ApiDocumentation';
 
 const makeGetRequest = async (url)=>{
 	let user = JSON.parse(getUser())
@@ -85,6 +87,8 @@ function App() {
               <Route path="/" element={<Login setUser={setUser} setAuthorization={setAuthorization} makePostRequest={makePostRequest} getUser={getUser} />} />
               <Route path="/home" element={<Home getUser={getUser} getAuthorization={getAuthorization} />}  />
               <Route path="/gallery" element={<WeGallery />} />
+			  <Route path="/upload-article" element={<UploadArticle getUser={getUser} />} />
+			  <Route path="/documentation" element={<ApiDocumentation getUser={getUser} />} />
           </Routes>
         </Row>
       </Container>
