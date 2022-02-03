@@ -42,7 +42,7 @@ let data = [
         headers: ["Authorization: Bearer AccessToken"],
         data:'{<br />&nbsp;&nbsp;&nbsp;"email": "johndoe@gmail.com", <br />&nbsp;&nbsp;&nbsp;"password": "pass"<br />}',
         method: 'POST',
-        response: '{<br />&nbsp;&nbsp;&nbsp;accessToken: token, <br />&nbsp;&nbsp;&nbsp;refreshToken: refresh_token, <br />&nbsp;&nbsp;&nbsp;id: userId, <br />&nbsp;&nbsp;&nbsp;firstName: firstName, <br />&nbsp;&nbsp;&nbsp;lastName: lastName, <br />&nbsp;&nbsp;&nbsp;email: email<br />}'
+        response: '{<br />&nbsp;&nbsp;&nbsp;id: "61fbdb5b8da25eeb9ce88c7a"<br />}'
     },
     {
         title: 'Rank webe elements',
