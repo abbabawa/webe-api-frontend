@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Card, Col, ListGroup, Row } from "react-bootstrap"
 import Navigation from "../components/Navigation"
 
-let urlPrefix = 'https://webe-api-test.herokuapp.com'
+let urlPrefix = 'https://webe-api.herokuapp.com/'
 let data = [
     {
         title: 'Google login',
@@ -140,26 +140,74 @@ let data = [
         headers: ["Authorization: Bearer AccessToken"],
         data:'',
         method: 'GET',
-        response: `[
-            <br />&nbsp;&nbsp;&nbsp;{
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fa4032b5289558353ff268",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d20075ab8c9eef803409",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-02T08:26:25.917Z",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 4,
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fa4032b5289558353ff268"
-            <br />&nbsp;&nbsp;&nbsp;},
-            <br />&nbsp;&nbsp;&nbsp;{
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fa5ebfb5289558353ffd0c",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d1ba75ab8c9eef803405",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-02T10:36:47.920Z",
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
-                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fa5ebfb5289558353ffd0c"
-            <br />&nbsp;&nbsp;&nbsp;}
-        <br />]`
+        response: `{
+            <br />&nbsp;&nbsp;&nbsp;"Spirituality": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbace1b528955835402b2c",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d16d75ab8c9eef8033ff",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:22:25.109Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbace1b528955835402b2c"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;],
+            <br />&nbsp;&nbsp;&nbsp;"Relationships": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbad03b528955835402b35",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d17875ab8c9eef803401",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:22:59.453Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbad03b528955835402b35"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;],
+            <br />&nbsp;&nbsp;&nbsp;"Sleep": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbad15b528955835402b3b",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d18b75ab8c9eef803403",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:23:17.995Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbad15b528955835402b3b"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;],
+            <br />&nbsp;&nbsp;&nbsp;"Physical Health": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbad25b528955835402b40",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d1ba75ab8c9eef803405",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:23:33.665Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbad25b528955835402b40"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;],
+            <br />&nbsp;&nbsp;&nbsp;"Emotional Experience": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbad36b528955835402b45",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d1e975ab8c9eef803407",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:23:50.206Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbad36b528955835402b45"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;],
+            <br />&nbsp;&nbsp;&nbsp;"Activity": [
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"_id": "61fbad46b528955835402b4a",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"element": "61f9d20075ab8c9eef803409",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"user": "61ea877cfbaaca38e7b76caa",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"__v": 0,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created_at": "2022-02-03T10:24:06.516Z",
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": 5,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "61fbad46b528955835402b4a"
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />&nbsp;&nbsp;&nbsp;]
+        }`
     },
     {
         title: 'View Resource categories',
