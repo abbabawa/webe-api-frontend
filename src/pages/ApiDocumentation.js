@@ -91,6 +91,29 @@ let data = [
                 <br />}`
     },
     {
+        title: 'Update profile',
+        url: urlPrefix+'/api/user/profile/edit/',
+        headers: ["Authorization: Bearer AccessToken"],
+        data:`{
+                <br />&nbsp;&nbsp;&nbsp;"email": "johndoe@webe.com"\n, 
+                <br />&nbsp;&nbsp;&nbsp;"firstName": "John", 
+                <br />&nbsp;&nbsp;&nbsp;"lastName": "doe" , 
+                <br />&nbsp;&nbsp;&nbsp;"address": "Home address", 
+                <br />&nbsp;&nbsp;&nbsp;"phone": "+1 (301) 993-3921"
+            <br />}`,
+        method: 'POST',
+        response: `{<br />&nbsp;&nbsp;&nbsp;status: true,
+                    <br />&nbsp;&nbsp;&nbsp;message: 'Profile update successfull',
+                    <br />&nbsp;&nbsp;&nbsp;data: {
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "johndoe@webe.com"\n, 
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"firstName": "John", 
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastName": "doe" , 
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"address": "Home address", 
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phone": "+1 (301) 993-3921"
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;}
+                <br />}`
+    },
+    {
         title: 'Rank webe elements',
         url: urlPrefix+'/api/webe-elements/rank',
         headers: ["Authorization: Bearer AccessToken"],
