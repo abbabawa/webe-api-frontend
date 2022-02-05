@@ -78,7 +78,7 @@ const Facebook = (props)=> {
     } else {
       fbContent = (
         <FacebookLogin
-          appId="670815464281190"
+          appId="466274651654184"
           autoLoad={true}
           fields="name,email,picture"
           onClick={componentClicked}
