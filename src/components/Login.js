@@ -7,7 +7,7 @@ import Register from './Register';
 import { useNavigate } from "react-router-dom"
 import Profile from './Profile';
 
-const clientId = "293068939315-j9sg0k19mnep7mepfrs7vtkmt3n0lqfo.apps.googleusercontent.com";
+const clientId = "321313072455-vp3661qkbsfb7tsesqh902cddlmtgsmo.apps.googleusercontent.com";
 
 function Login(props) {
     const navigate = useNavigate()
