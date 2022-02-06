@@ -44,9 +44,25 @@ let data = [
         title: 'Apple login',
         url: urlPrefix+'/api/auth/apple/',
         headers: [],
-        data:'',
+        data: `{
+                <br />&nbsp;&nbsp;&nbsp;"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ95j"\n, 
+                <br />&nbsp;&nbsp;&nbsp;"user": "user",
+                <br />&nbsp;&nbsp;&nbsp;"familyName": "John",
+                <br />&nbsp;&nbsp;&nbsp;"givenName": "Doe", 
+                <br />&nbsp;&nbsp;&nbsp;"email": "John@gmail.com", 
+            <br />}`,
         method: 'POST',
-        response: ''
+        response: `{<br />&nbsp;&nbsp;&nbsp;status: true,
+                <br />&nbsp;&nbsp;&nbsp;message: 'Request successfull',
+                <br />&nbsp;&nbsp;&nbsp;data: {
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accessToken: token,
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;refreshToken: refresh_token, 
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: userId, 
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName: firstName, 
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lastName: lastName, 
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email: email
+                <br />&nbsp;&nbsp;&nbsp;&nbsp;}
+            <br />}`
     },
     {
         title: 'Normal Signup',
